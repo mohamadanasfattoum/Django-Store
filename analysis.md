@@ -1,0 +1,21 @@
+- products:
+    - name
+    - image
+    - images
+    - price
+    - reviews
+    - flag
+    - brand
+    - sku
+    - subtitle
+    - description tags
+    - vidio_url
+    - related-item
+
+- Brands
+    - name
+    - image
+    - products-count
+    - rate-count
+    - reviews
+
