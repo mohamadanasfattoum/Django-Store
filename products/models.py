@@ -1,15 +1,33 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from taggit.managers import TaggableManager
 
+FLAG_CHOICES = (
+    ('Sale','Sale'),
+    ('Feature','Feature'),
+    ('New','New'),
+)
 
 class Product(models.Model):
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='peoduct')
     price = models.FloatField()
+    flag = models.CharField(max_length=10, choices=FLAG_CHOICES)
+    brand = models.ForeignKey('Brand', related_name='product_brand', on_delete=models.SET_NULL, null=True, blank=True )
+    sku = models.CharField(max_length=10)
+    subtitle = models.CharField(max_length=500)
+    description = models.TextField(max_length=50000)
+    tags = TaggableManager()
+    vidio_url = models.URLField()
+    slug = models.SlugField(null=True, blank=True)
 
 
 
+
+class Brand(models.Model):
+    name = models.CharField(max_length=120)
+    image = models.ImageField(upload_to='brand')
 
 
 
