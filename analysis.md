@@ -1,16 +1,18 @@
 - products:
     - name
     - image
-    - images
+    - images *
     - price
-    - reviews
-    - flag
-    - brand
+    - reviews *
+    - flag (Sale,Feature,New)
+    - brand *
     - sku
     - subtitle
-    - description tags
+    - description 
+    - tags
     - vidio_url
     - related-item
+    - slug
 
 - Brands
     - name

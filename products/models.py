@@ -25,18 +25,22 @@ class Product(models.Model):
 
 
 
+class ProductImages(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE , related_name= 'product_image')
+    image = models.ImageField(upload_to='product_images')
+
+
+
+
 class Brand(models.Model):
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='brand')
 
 
 
-class ProductImages(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE , related_name= 'product_image')
-    image = models.ImageField(upload_to='product_images')
 
 
-class ProductReviews(models.Model):
+class Review(models.Model):
     user = models.ForeignKey(User,related_name='review_user', on_delete=models.SET_NULL,null=True , blank= True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE , related_name= 'review_product')
     review = models.TextField(max_length=10000)
