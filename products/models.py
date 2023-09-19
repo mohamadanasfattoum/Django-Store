@@ -23,6 +23,9 @@ class Product(models.Model):
     slug = models.SlugField(null=True, blank=True)
 
 
+    def __str__(self) -> str:
+        return self.name
+
 
 
 class ProductImages(models.Model):
@@ -36,7 +39,8 @@ class Brand(models.Model):
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='brand')
 
-
+    def __str__(self) -> str:
+        return self.name
 
 
 
@@ -46,3 +50,7 @@ class Review(models.Model):
     review = models.TextField(max_length=10000)
     created_at = models.DateTimeField(default= timezone.now)
     rate = models.IntegerField()
+
+
+    def __str__(self) -> str:
+        return str(self.product)
