@@ -19,7 +19,7 @@ class Product(models.Model):
     subtitle = models.CharField(max_length=500)
     description = models.TextField(max_length=50000)
     tags = TaggableManager()
-    vidio_url = models.URLField()
+    vidio_url = models.URLField(null=True, blank=True)
     slug = models.SlugField(null=True, blank=True)
 
 
