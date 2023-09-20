@@ -44,11 +44,14 @@ class ProductImages(models.Model):
 class Brand(models.Model):
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='brand')
+    slug = models.SlugField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.name
 
-
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Brand,self).save(*args, **kwargs)
 
 class Review(models.Model):
     user = models.ForeignKey(User,related_name='review_user', on_delete=models.SET_NULL,null=True , blank= True)
