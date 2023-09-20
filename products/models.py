@@ -1,7 +1,9 @@
+from collections.abc import Iterable
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from taggit.managers import TaggableManager
+from django.utils.text import slugify
 
 FLAG_CHOICES = (
     ('Sale','Sale'),
@@ -27,6 +29,9 @@ class Product(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Product,self).save(*args, **kwargs)
 
 
 class ProductImages(models.Model):
