@@ -19,9 +19,8 @@ class ProductDetail(DetailView):
     
 
 
-class BrandtList(ListView):
+class BrandList(ListView):
     model = Brand
 
-
-class BrandtDetail(DetailView):
+class BrandDetail(DetailView):
     model = Brand
