@@ -3,8 +3,8 @@ from django.db import models
 class Company(models.Model):
     name = models.CharField(max_length=50)
     logo = models.ImageField(upload_to='logo/')
-    call_as = models.CharField(max_length=20)
-    email_as = models.CharField(max_length=50)
+    call_us = models.CharField(max_length=20)
+    email_us = models.CharField(max_length=50)
     subtitle = models.CharField(max_length=300)
     emails = models.TextField(max_length=300)
     phones = models.TextField(max_length=300)
