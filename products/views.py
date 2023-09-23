@@ -13,5 +13,5 @@ class ProductDetail(DetailView):
 
     def get_context_data(self, **kwargs: Any):
         context = super().get_context_data(**kwargs)
-        context["product-image"] = ProductImages.objects.filter(Product=self.get_object())
+        context["product_images"] = ProductImages.objects.filter(product=self.get_object())
         return context
