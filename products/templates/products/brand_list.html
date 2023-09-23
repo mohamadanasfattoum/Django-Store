@@ -60,216 +60,24 @@
                     </div>
                 </div>
                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 isotope-items">
-                    <div class="col all vegetables">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/01.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
+                    {% for opbject in object_list %}
+
+                        <div class="col all vegetables">
+                            <div class="brand-wrap">
+                                <div class="brand-media">
+                                    <img src="{{object.image.url}}" alt="brand">
+                                    <div class="brand-overlay">
+                                        <a href="brand-single.html"><i class="fas fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="brand-meta">
+                                    <h4>{{object.name}}</h4>
+                                    <p>(45 items)</p>
                                 </div>
                             </div>
-                            <div class="brand-meta">
-                                <h4>natural greeny</h4>
-                                <p>(45 items)</p>
-                            </div>
                         </div>
-                    </div>
-                    <div class="col all fruits">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/02.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>vegan lover</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all drinks">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/03.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>organic foody</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all fishes">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/04.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>ecomart limited</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all meats">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/05.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>fresh fortune</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all vegetables">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/06.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>econature</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all fruits">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/01.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>natural greeny</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all drinks">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/02.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>vegan lover</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all fishes">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/03.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>organic foody</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all meats">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/04.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>ecomart limited</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all vegetables">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/05.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>fresh fortune</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all fruits">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/06.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>econature</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all drinks">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/02.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>econature</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all fishes">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/01.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>natural greeny</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col all fishes">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="images/brand/03.jpg" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="brand-meta">
-                                <h4>organic foody</h4>
-                                <p>(45 items)</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
