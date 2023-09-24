@@ -1,3 +1,8 @@
+import os, django
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
+django.setup()
+
+
 from products.models import Product, Brand, Review
 import random
 from faker import Faker
