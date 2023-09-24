@@ -53,7 +53,3 @@ def add_reviews(n):
 
 
 
-
-
-
-add_reviews(2)
