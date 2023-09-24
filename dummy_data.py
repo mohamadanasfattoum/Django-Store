@@ -28,5 +28,5 @@ def add_reviews(n):
 
 
 
-add_brands(2)
+add_brands(50)
 
