@@ -14,7 +14,7 @@ FLAG_CHOICES = (
 
 class Product(models.Model):
     name = models.CharField(_('Name') , max_length=120)
-    image = models.ImageField(_('Image'),upload_to='peoduct')
+    image = models.ImageField(_('Image'),upload_to='product')
     price = models.FloatField(_('Price'),)
     flag = models.CharField(_('Flag'),max_length=10, choices=FLAG_CHOICES)
     brand = models.ForeignKey('Brand', verbose_name=_('Brand'), related_name='product_brand', on_delete=models.SET_NULL, null=True, blank=True )
