@@ -852,7 +852,7 @@
                             <a class="footer-logo" href="#">
                                 <img src="{{company_data.logo.url}}" alt="logo">
                             </a>
-                            <p class="footer-desc">Adipisci asperiores ipsum ipsa repellat consequatur repudiandae quisquam assumenda dolor perspiciatis sit ipsum dolor amet.</p>
+                            <p class="footer-desc">{{company_data.subtitle}}</p>
                             <ul class="footer-social">
                                 <li><a class="icofont-facebook" href="{{company_data.fb_link}}"></a></li>
                                 <li><a class="icofont-twitter" href="{{company_data.tw_link}}"></a></li>
@@ -869,8 +869,8 @@
                                 <li>
                                     <i class="icofont-ui-email"></i>
                                     <p>
-                                        <span>support@greeny.com</span>
-                                        <span>carrer@greeny.com</span>
+                                        <span>{{company_data.emails}}</span>
+                                        
                                     </p>
                                 </li>
                                 <li>
@@ -882,7 +882,7 @@
                                 </li>
                                 <li>
                                     <i class="icofont-location-pin"></i>
-                                    <p>1Hd- 50, 010 Avenue, NY 90001 United States</p>
+                                    <p>{{company_data.address}}</p>
                                 </li>
                             </ul>
                         </div>
@@ -911,10 +911,10 @@
                     <div class="col-sm-6 col-xl-3">
                         <div class="footer-widget">
                             <h3 class="footer-title">Download App</h3>
-                            <p class="footer-desc">Lorem ipsum dolor sit amet tenetur dignissimos ipsum eligendi autem obcaecati minus ducimus totam reprehenderit exercitationem!</p>
+                            <p class="footer-desc">{{company_data.app_description}}</p>
                             <div class="footer-app">
-                                <a href="#"><img src="images/google-store.png" alt="google"></a>
-                                <a href="#"><img src="images/app-store.png" alt="app"></a>
+                                <a href="{{company_data.androud_app}}"><img src="images/google-store.png" alt="google"></a>
+                                <a href="{{company_data.iphone_app}}"><img src="images/app-store.png" alt="app"></a>
                             </div>
                         </div>
                     </div>
