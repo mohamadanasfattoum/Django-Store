@@ -4,6 +4,7 @@ django.setup()
 
 
 from products.models import Product, Brand, Review
+from django.contrib.auth.models import User
 import random
 from faker import Faker
 
@@ -41,10 +42,18 @@ def add_products(n):
 def add_reviews(n):
     fake = Faker()
     for x in range(n):
-        pass
+        Review.objects.create(
+            user = User.objects.get(id=random.randint(1,4)),
+            product = Product.objects.get(id=random.randint(1,1002)),
+            review = fake.text(max_nb_chars=200),
+            rate = random.randint(1,5),
+
+        )
+    print(f"{n} Review was created successfully" )
 
 
 
 
 
-add_products(1000)
+
+add_reviews(2)
