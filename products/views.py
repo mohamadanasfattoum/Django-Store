@@ -5,7 +5,7 @@ from .models import Product , ProductImages, Review, Brand
 
 class ProductList(ListView):
     model = Product
-    paginate_by = 10
+    paginate_by = 30
 
 
 class ProductDetail(DetailView):
@@ -22,7 +22,7 @@ class ProductDetail(DetailView):
 
 class BrandList(ListView):
     model = Brand
-
+    paginate_by = 10
 
 
 
