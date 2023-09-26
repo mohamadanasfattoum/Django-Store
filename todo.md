@@ -1,0 +1,20 @@
+- brand detail
+- home
+- api
+- queryset api
+- orders
+- cart
+- coupons
+- users
+- transltion
+- payment
+- docker
+- celery
+- redis
+- caching
+- ajax
+- deploy
+- charts
+- testing
+- vuejs
+- 
