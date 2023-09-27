@@ -26,5 +26,9 @@ class BrandList(ListView):
 
 
 
-class BrandDetail(DetailView):
+#class BrandDetail(DetailView):
+#    model = Brand
+
+
+class BrandDetail(ListView): #change
     model = Brand
