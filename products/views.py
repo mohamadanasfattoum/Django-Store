@@ -1,4 +1,5 @@
 from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Product , ProductImages, Review, Brand
@@ -34,3 +35,11 @@ class BrandDetail(ListView): #change
     model = Product
     template_name = 'products/brand_detail.html'
     paginate_by = 20
+
+    def get_queryset(self):
+        queryset = super(BrandDetail , self).get_queryset()
+        brand = Brand.objects.get(slug=self.kwargs['slug'])
+        queryset = queryset.filter(brand=brand)
+        return queryset
+    
+    
