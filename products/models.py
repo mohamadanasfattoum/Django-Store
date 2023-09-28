@@ -31,7 +31,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super(Product,self).save(*args, **kwargs)
+        super(Product, self).save(*args, **kwargs)
 
 
 class ProductImages(models.Model):
