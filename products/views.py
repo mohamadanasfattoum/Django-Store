@@ -34,7 +34,7 @@ class BrandList(ListView):
 class BrandDetail(ListView): #change
     model = Product
     template_name = 'products/brand_detail.html'
-    paginate_by = 20
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = super(BrandDetail , self).get_queryset()
@@ -42,4 +42,7 @@ class BrandDetail(ListView): #change
         queryset = queryset.filter(brand=brand)
         return queryset
     
-    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["brand"] = Brand.objects.get(slug=self.kwargs['slug'])
+        return context
