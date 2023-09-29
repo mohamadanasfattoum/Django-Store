@@ -184,52 +184,53 @@
                 </div>
                 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2">
                 {% for object in featur_products %}
-                        <div class="col">
-                            <div class="product-card">
-                                <div class="product-media">
-                                    <div class="product-label">
-                                        <label class="label-text new">{{object.flag}}</label>
-                                    </div>
-                                    <button class="product-wish wish">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <a class="product-image" href="product-video.html">
-                                        <img src="{{object.image.url}}" alt="product" style="width: 250px; height: 250px; object-fit: scale-down;">
-                                    </a>
-                                    <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
-                                    </div>
+                    <div class="col">
+                        <div class="feature-card">
+                            <div class="feature-media">
+                                <div class="feature-label">
+                                    <label class="label-text feat">{{object.flag}}</label>
                                 </div>
-                                <div class="product-content">
-                                    <div class="product-rating">
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <a href="product-video.html">(3)</a>
-                                    </div>
-                                    <h6 class="product-name">
-                                        <a href="/products/{{object.slug}}">{{object.name}}</a>
-                                    </h6>
-                                    <h6 class="product-price">
-                                        
-                                        <span>{{object.price}}</span>
-                                    </h6>
-                                    <button class="product-add" title="Add to Cart">
-                                        <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
-                                    </button>
-                                    <div class="product-action">
-                                        <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                        <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                    </div>
+                                <button class="feature-wish wish">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <a class="feature-image" href="product-video.html">
+                                    <img src="{{object.image.url}}" alt="product" style="width: 250px; height: 250px; object-fit: scale-down;">
+                                </a>
+                                <div class="feature-widget">
+                                    <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
+                                    <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                    <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h6 class="feature-name">
+                                    <a href="/products/{{object.slug}}">{{object.name}}</a>
+                                </h6>
+                                <div class="feature-rating">
+                                    <i class="active icofont-star"></i>
+                                    <i class="active icofont-star"></i>
+                                    <i class="active icofont-star"></i>
+                                    <i class="active icofont-star"></i>
+                                    <i class="icofont-star"></i>
+                                    <a href="product-video.html">(Reviews)</a>
+                                </div>
+                                <h6 class="feature-price">
+        
+                                    <span{{object.price}}</span>
+                                </h6>
+                                <p class="feature-desc">{{object.subtitle}}</p>
+                                <button class="product-add" title="Add to Cart">
+                                    <i class="fas fa-shopping-basket"></i>
+                                    <span>add</span>
+                                </button>
+                                <div class="product-action">
+                                    <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
+                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                    <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 {% endfor %}
 
                 </div>
