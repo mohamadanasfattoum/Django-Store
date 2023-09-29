@@ -11,3 +11,9 @@ def product_list_api(request):
     products = Product.objects.all()
     data = ProductSerializer(products,many=True).data
     return Response({'products':data})
+
+@api_view(['GET'])
+def product_detail_api(request,product_id):
+    product = Product.objects.all(id=product_id)
+    data = ProductSerializer(product).data
+    return Response({'product':data})
