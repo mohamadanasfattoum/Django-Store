@@ -1,4 +1,4 @@
-- brand detail
+- 
 - home
 - api
 - queryset api
@@ -17,4 +17,4 @@
 - charts
 - testing
 - vuejs
-- 
+- sql ch
