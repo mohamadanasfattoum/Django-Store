@@ -23,3 +23,8 @@ def product_detail_api(request,product_id):
 class ProductListAPI(generics.ListAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+
+class ProductDetailAPI(generics.RetrieveAPIView):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
