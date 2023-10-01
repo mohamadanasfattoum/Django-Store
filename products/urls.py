@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import ProductList, ProductDetail, BrandList ,BrandDetail
-from .api import product_list_api ,product_detail_api, ProductListAPI, ProductDetailAPI
+from .api import ProductListAPI, ProductDetailAPI
 
 
 

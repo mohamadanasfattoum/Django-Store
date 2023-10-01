@@ -6,7 +6,7 @@ from .models import Product
 
 
 
-
+'''
 @api_view(['GET'])
 def product_list_api(request):
     products = Product.objects.all()
@@ -18,9 +18,9 @@ def product_detail_api(request,product_id):
     product = Product.objects.get(id=product_id)
     data = ProductSerializer(product,context ={'request':request}).data
     return Response({'product':data})
+'''
 
-
-class ProductListAPI(generics.ListAPIView):
+class ProductListAPI(generics.ListCreateAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
 
