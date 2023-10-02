@@ -36,3 +36,7 @@ class ProductDetailAPI(generics.RetrieveAPIView):
 class BrandListAPI(generics.ListAPIView):
     serializer_class = BrandSerializer
     queryset = Brand.objects.all()
+
+class BrandDetailAPI(generics.RetrieveAPIView):
+    serializer_class = BrandSerializer
+    queryset = Brand.objects.all()
