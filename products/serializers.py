@@ -13,6 +13,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    brand = serializers.StringRelatedField()
     reviews = ReviewSerializer(many=True, source ='review_product')
     reviews_count = serializers.SerializerMethodField()
     avg_rate = serializers.SerializerMethodField()
