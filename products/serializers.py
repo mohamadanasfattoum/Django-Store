@@ -1,9 +1,17 @@
 from rest_framework import serializers
-from .models import Product , Brand
+from .models import Product , Brand, Review
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = '__all__'
+
+
 
 class ProductSerializer(serializers.ModelSerializer):
+    reviews = ReviewSerializer(many=True, source ='review_product')
     reviews_count = serializers.SerializerMethodField()
-
     class Meta:
         model = Product
         fields = '__all__'
