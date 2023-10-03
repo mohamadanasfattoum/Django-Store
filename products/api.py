@@ -3,9 +3,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
+
 from .serializers import ProductListSerializer, ProductDetailSerializer , BrandListSerializer,BrandDetailSerializer
 from .models import Product, Brand
 from .mypagination import MyPagination
+from .myfilters import ProductFilter
 
 
 
@@ -31,6 +33,7 @@ class ProductListAPI(generics.ListAPIView):
     search_fields = ['name', 'description']
     filterset_fields = ['flag', 'brand','price']
     ordering_fields = ['price']
+    filterset_class = ProductFilter
 
 
 class ProductDetailAPI(generics.RetrieveAPIView):
