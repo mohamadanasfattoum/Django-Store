@@ -1,12 +1,11 @@
-- 
-- 
-- api
 - queryset api
-- orders
-- cart
+- orders ,cart
+- orders ,cart ----> api
+- transltion
+
+
 - coupons
 - users
-- transltion
 - payment
 - docker
 - celery
