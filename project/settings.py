@@ -146,4 +146,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 #APPEND_SLASH = False
