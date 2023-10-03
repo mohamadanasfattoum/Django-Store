@@ -1,19 +1,18 @@
+
+- users
+- charts
+- sql
 - queryset api
 - orders ,cart
 - orders ,cart ----> api
-- transltion
-
-
 - coupons
-- users
-- payment
+- transltion
+- ajax
 - docker
 - celery
 - redis
 - caching
-- ajax
+- payment
 - deploy
-- charts
 - testing
 - vuejs
-- sql ch
