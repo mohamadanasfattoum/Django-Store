@@ -6,5 +6,8 @@ class ProductFilter(filters.FilterSet):
     class Meta:
         model = Product
         fields = {
-            'price' : ['range']
+            'name' :['contains'],
+            'price' : ['range'],
+            'flag' : ['exact'],
+            'brand' : ['exact'],
         }
