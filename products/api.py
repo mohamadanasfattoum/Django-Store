@@ -29,7 +29,7 @@ class ProductListAPI(generics.ListAPIView):
     pagination_class = MyPagination
     filter_backends = [filters.SearchFilter,DjangoFilterBackend,filters.OrderingFilter]
     search_fields = ['name', 'description']
-    filterset_fields = ['flag', 'brand']
+    filterset_fields = ['flag', 'brand','price']
     ordering_fields = ['price']
 
 
