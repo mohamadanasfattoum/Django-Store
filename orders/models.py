@@ -18,7 +18,7 @@ class Order(models.Model):
     # ForeignKey لان علاقة العديد لواحد زبون واحد يطلب عدة اوردرات
 
     status = models.CharField(max_length=12, choices=ORDER_STATUS, default='Recieved')
-    code =
+    code = models.CharField(max_length=10, default=generate_code)
 
 
 
