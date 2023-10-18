@@ -21,7 +21,7 @@ class Order(models.Model):
     status = models.CharField(max_length=12, choices=ORDER_STATUS, default='Recieved')
     code = models.CharField(max_length=10, default=generate_code)
     order_time = models.DateTimeField(default=timezone.now)
-
+    delivery_time = models.DateTimeField(null=True, blank=True)
 
 
 class OrderDetail(models.Model):
