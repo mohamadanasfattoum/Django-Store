@@ -22,14 +22,14 @@
     - reviews
 ---------------
 orders:
-    - user
+    - user .
     - product
-    - code
+    - code .
     - delivery addres
     - delivery time
     - delivery fee
-    - order time
-    - status [recieved, processed, shipped, delivered]
+    - order time .
+    - status [recieved, processed, shipped, delivered] .
     - quantity
     - brand
     - price
