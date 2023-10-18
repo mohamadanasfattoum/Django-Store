@@ -20,4 +20,19 @@
     - products-count
     - rate-count
     - reviews
-
+---------------
+orders:
+    - user
+    - product
+    - code
+    - delivery addres
+    - delivery time
+    - delivery fee
+    - order time
+    - status [recieved, processed, shipped, delivered]
+    - quantity
+    - brand
+    - price
+    - 
+    - 
+    - 
