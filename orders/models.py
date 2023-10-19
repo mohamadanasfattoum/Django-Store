@@ -27,6 +27,8 @@ class Order(models.Model):
     order_time = models.DateTimeField(default=timezone.now)
     delivery_time = models.DateTimeField(null=True, blank=True)
     coupon = models.ForeignKey('Coupon', related_name='order_coupon', on_delete=models.SET_NULL, null=True, blank=True)
+    order_total_discount= models.FloatField(null=True, blank=True)
+
 
 class OrderDetail(models.Model):
     order = models.ForeignKey(Order, related_name='order_delait', on_delete=models.CASCADE)
