@@ -36,3 +36,9 @@ class OrderDetail(models.Model):
 
 class Coupon(models.Model):
     code = models.CharField(max_length=12)
+    start_date = models.DateField(default=timezone.now)
+    
+    end_date = models.DateField(default=timezone.now) # بهاد الشكل لحتى الزبون يضيف اسبوع من الوق الحاضر
+
+    quantity = models.IntegerField()
+    discount = models.FloatField()
