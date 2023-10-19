@@ -33,3 +33,6 @@ class OrderDetail(models.Model):
     price = models.FloatField()
     total = models.FloatField()
 
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=12)
