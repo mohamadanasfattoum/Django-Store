@@ -25,4 +25,8 @@ class Order(models.Model):
 
 
 class OrderDetail(models.Model):
-    pass
+    order = models.ForeignKey(Order, related_name='order_delait', on_delete=models.CASCADE)
+    # order >> ForeignKey (Order)=(OrderDetail1+OrderDetail2+OrderDetail3)لأن داخل الاودر يوجد كذا اوردر دتيل
+
+
+
