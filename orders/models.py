@@ -39,6 +39,28 @@ class OrderDetail(models.Model):
     total = models.FloatField()
 
 
+
+CART_STATUS = (
+    ('inprogress','inprogress'),
+    ('completed','completed'),
+)
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, related_name='cart_owner' , on_delete= models.SET_NULL , null=True, blank=True)
+    status = models.CharField(max_length=12, choices=CART_STATUS, default='inprogress')
+    coupon = models.ForeignKey('Coupon', related_name='cart_coupon', on_delete=models.SET_NULL, null=True, blank=True)
+    order_total_discount= models.FloatField(null=True, blank=True)
+
+
+class CartDetail(models.Model):
+    Cart = models.ForeignKey(Order, related_name='cart_delait', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='cartdetail_product', on_delete=models.SET_NULL, null=True, blank=True)
+    quantity = models.IntegerField()
+    total = models.FloatField()
+
+
+
 class Coupon(models.Model):
     code = models.CharField(max_length=12)
     start_date = models.DateField(default=timezone.now)
