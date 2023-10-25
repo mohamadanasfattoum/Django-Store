@@ -3,8 +3,8 @@ from .models import Order, OrderDetail, Cart,CartDetail, Coupon
 
 
 def order_list(request):
-    order= Order.objects.all()
-    return render(request,'orders/orders.html',{'order':order})
+    orders= Order.objects.all()
+    return render(request,'orders/orders.html',{'orders':orders})
 
 
 def checkout(request):

@@ -31,7 +31,7 @@ class Order(models.Model):
 
 
 class OrderDetail(models.Model):
-    order = models.ForeignKey(Order, related_name='order_delait', on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, related_name='order_detail', on_delete=models.CASCADE)
     # order >> ForeignKey (Order)=(OrderDetail1+OrderDetail2+OrderDetail3)لأن داخل الاودر يوجد كذا اوردر دتيل
     product = models.ForeignKey(Product, related_name='orderdetail_product', on_delete=models.SET_NULL, null=True, blank=True)
     quantity = models.IntegerField()
