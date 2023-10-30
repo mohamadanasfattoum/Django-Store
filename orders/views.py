@@ -33,7 +33,10 @@ def checkout(request):
 
                 cart.coupon = coupon
                 cart.order_total_discount = sub_total # مجموع الخقم الرئيسي
+                coupon.quantity -= 1
                 cart.save()
+                coupon.save()
+
                 return render(request,'orders/checkout.html',{
                     'cart':cart ,
                     'cart_detail':cart_detail,
