@@ -15,6 +15,6 @@ def checkout(request):
     return render(request,'orders/checkout.html',{
         'cart':cart ,
         'cart_detail':cart_detail,
-        'delivery_fee':delivery_fee
+        'delivery_fee' : delivery_fee,
 
     })
