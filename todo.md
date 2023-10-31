@@ -1,11 +1,11 @@
 
+- orders ,coupons ----> api
+
+
 - users
 - charts
 - sql
 - queryset api
-- orders ,cart
-- orders ,cart ----> api
-- coupons
 - transltion
 - ajax
 - docker
