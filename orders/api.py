@@ -17,11 +17,17 @@ class CartDetailCreateDeleteAPI(generics.GenericAPIView): # كلاس فارغة 
         return Response({'Cart':data})
 
 
-    #def post(): # دالة لحتى اضيف
-        #pass
+    def post(self,request,*args,**kwargs):  # دالة لحتى اضيف
+        user = User.objects.get(username=self.kwargs['username'])
 
 
-    #def delete():
-        #pass 
 
+    def delete(self,request,*args,**kwargs):
+        user = User.objects.get(username=self.kwargs['username']) #بحاجة مسح عنصر لالداخل وليس كل الكارت
+        product= Product.objects.get(id=request.Post['product_id'])
+        cart = Cart.objects.get(user=user,status='inprogress')
     
+
+        cart_detail = CartDetail.objects.get(cart=cart, product=product)
+        cart_detail.detete()
+        return Response('message':'product was deteted successfuly')
