@@ -26,7 +26,7 @@ class OrderDetailSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    cart_detail= OrderDetailSerializer(many=True)
+    order_detail= OrderDetailSerializer(many=True)
     class Meta:
         model=Order
         fields='__all__'
