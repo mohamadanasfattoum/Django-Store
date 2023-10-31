@@ -1,17 +1,19 @@
 from rest_framework import generics
 from rest_framework.response import Response
-from .serializers import CartSerializer, OrderSerializer, CartDetailSerializer, OrderDetailSerializer
+from .serializers import CartSerializer, OrderSerializer
 from products.models import Product, Brand
 from django.contrib.auth.models import User
 from .models import Cart, CartDetail, Order, OrderDetail, Coupon
 
 
 class CartDetailCreateDeleteAPI(generics.GenericAPIView): # كلاس فارغة استطيع ان اخصص بها ما اشاء GenericAPIViewباستخدام
+    serializer_class= CartSerializer
+    
     def get(self,request,*args,**kwargs):# دالة لاحضار الليس ويتيل
         
         user = User.objects.get(username=self.kwargs['username'])
         cart , created = Cart.objects.get_or_create(user=user,status='inprogress')
-        data = CartDetailSerializer(cart).data #??
+        data = CartSerializer(cart).data #??
         return Response({'Cart':data})
 
 
@@ -22,4 +24,4 @@ class CartDetailCreateDeleteAPI(generics.GenericAPIView): # كلاس فارغة 
     #def delete():
         #pass 
 
-    pass
+    
