@@ -51,6 +51,12 @@ class OrderListAPI(generics.ListAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderListSerializer
 
+    def list(self, request, *args, **kwargs): #لحتى يرجع فقط باليس تبع الاوردر المطلوب
+        user = User.objects.get(username=self.kwargs['username'])
+        queryset = self.get_queryset().filter(user=user)
+        data = OrderListSerializer(queryset,many=True).data
+        return Response(data)
+
 
 
 class OrderDetailAPI(generics.RetrieveAPIView):
