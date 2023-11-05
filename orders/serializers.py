@@ -25,7 +25,7 @@ class OrderDetailSerializer(serializers.ModelSerializer):
 
 
 
-class OrderSerializer(serializers.ModelSerializer):
+class OrderListSerializer(serializers.ModelSerializer):
     order_detail= OrderDetailSerializer(many=True)
     class Meta:
         model=Order
