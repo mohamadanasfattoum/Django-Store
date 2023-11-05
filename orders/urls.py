@@ -10,6 +10,7 @@ urlpatterns= [
 
     #api
     path('api/<str:username>/list', OrderListAPI.as_view()),
+    path('api/<str:username>/list/<int:pk>', OrderDetailAPI.as_view()),
     path('api/<str:username>/cart', CartDetailCreateDeleteAPI.as_view()),
 
 
