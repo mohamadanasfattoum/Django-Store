@@ -68,8 +68,10 @@ class OrderDetailAPI(generics.RetrieveAPIView):
 
 
 class CreateOrderAPI(generics.GenericAPIView):
-    pass
-
+    def get(self, request, *args, **kwargs):
+        user = User.objects.get(username=self.kwargs['username'])
+        cart = Cart.objects.get(user=user,status='inprogress')
+        cart_detail= CartDetail.objects.filter(cart=cart)
 
 
 
