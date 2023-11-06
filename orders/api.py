@@ -4,8 +4,10 @@ from rest_framework.response import Response
 from .serializers import CartSerializer, OrderListSerializer, OrderDetailSerializer
 from products.models import Product, Brand
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 from .models import Cart, CartDetail, Order, OrderDetail, Coupon
-
+import datetime
+from settings.models import DeliveryFee
 
 class CartDetailCreateDeleteAPI(generics.GenericAPIView): # كلاس فارغة استطيع ان اخصص بها ما اشاء GenericAPIViewباستخدام
     serializer_class= CartSerializer
@@ -73,4 +75,28 @@ class CreateOrderAPI(generics.GenericAPIView):
 
 
 class ApplyCouponAPI(generics.GenericAPIView):
-    pass
+    def post(self, request, *args, **kwargs):
+        user = User.objects.get(username=self.kwargs['username'])
+        cart = Cart.objects.get(user=user,status='inprogress')
+        coupon = get_object_or_404(Coupon , code=request.data['coupon_code'])    #لكي لايتوقف الموقع عند هدم تطابق الكود
+
+
+        if coupon and coupon.quantity > 0 :  # للتأكد من الوقت 
+            today_date = datetime.datetime.today().date()
+            if today_date >= coupon.start_date and today_date <= coupon.end_date:
+                coupon_value = sub_total / 100*coupon.discount
+                sub_total = sub_total - coupon_value
+                
+
+                cart.coupon = coupon
+                cart.order_total_discount = sub_total # مجموع الخقم الرئيسي
+                coupon.quantity -= 1
+                cart.save()
+                coupon.save()
+                return Response ({'messege':'coupon was applied successfully'})           
+            return Response ({'messege':'coupon is not working'})
+        return Response ({'messege':'coupon is not valid'})
+
+
+
+
