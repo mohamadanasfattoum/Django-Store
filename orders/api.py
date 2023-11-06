@@ -75,6 +75,26 @@ class CreateOrderAPI(generics.GenericAPIView):
 
 
 
+        # cart-------------> order
+        new_order = Order.objects.create(
+            user = user ,
+            coupon = cart.coupon,
+            order_total_discount = cart.order_total_discount
+            
+        )
+        # cart_detail-------------> order_detail
+        for object in cart_detail:
+            OrderDetail.objects.creat(
+                order = new_order ,
+                product = object.product,
+                quantity = object.quantity,
+                price = object.product.price ,
+                total = object.total
+            )
+        cart.status= 'completed'
+        cart.save({'messege':'Your Order Was Created Successfully'})
+            
+
 
 class ApplyCouponAPI(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
