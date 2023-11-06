@@ -84,7 +84,7 @@ class CreateOrderAPI(generics.GenericAPIView):
         )
         # cart_detail-------------> order_detail
         for object in cart_detail:
-            OrderDetail.objects.creat(
+            OrderDetail.objects.create(
                 order = new_order ,
                 product = object.product,
                 quantity = object.quantity,
@@ -92,8 +92,8 @@ class CreateOrderAPI(generics.GenericAPIView):
                 total = object.total
             )
         cart.status= 'completed'
-        cart.save({'messege':'Your Order Was Created Successfully'})
-            
+        cart.save()
+        return Response ({'messege':'Your Order Was Created Successfully'})            
 
 
 class ApplyCouponAPI(generics.GenericAPIView):
