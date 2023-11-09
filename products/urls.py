@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import ProductList, ProductDetail, BrandList ,BrandDetail
+from .views import ProductList, ProductDetail, BrandList ,BrandDetail, mydebug
 from .api import ProductListAPI, ProductDetailAPI, BrandListAPI , BrandDetailAPI
 
 
 
 urlpatterns = [
+    path('debug', mydebug),
     path('', ProductList.as_view()),
     path('<slug:slug>', ProductDetail.as_view()),
     path('brands/', BrandList.as_view()),
