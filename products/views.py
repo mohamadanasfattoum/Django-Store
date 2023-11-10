@@ -3,11 +3,11 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Product , ProductImages, Review, Brand
-
-
+from django.db.models import Q
 
 def mydebug(request):
-    # data = Product.objects.all() # >90 
+    # data = Product.objects.all() 
+    # data = Product.objects.filter(price__gt= 90) # >90
     # data = Product.objects.filter(price__gte= 90) # >=90
     # data = Product.objects.filter(price__lt = 22) # <22
     # data = Product.objects.filter(price__lte = 22) # <=22
@@ -17,7 +17,27 @@ def mydebug(request):
     # data = Product.objects.filter(name__contains='ian') # name
     # data = Product.objects.filter(name__startswith='ian') # start name
     # data = Product.objects.filter(name__endswith='ia') # name end
-    data = Product.objects.filter(name__isnull=True) # without name
+    # data = Product.objects.filter(name__isnull=True) # without name
+
+    # data = Product.objects.filter(price__gt= 90 , name__startswith='ian') #لأسخدام فلترين بشرط تواجد الشرطبن
+
+    # data = Product.objects.filter(
+    # Q(price__gt= 90) &
+    # Q(name__startswith='ian')
+    # ) # and &
+
+    
+    # data = Product.objects.filter(
+    #     Q(price__gt= 90) |
+    #     Q(name__startswith='ian')
+    #     ) #  or |
+
+
+    data = Product.objects.filter(
+        Q(price__gt= 90) |
+        ~Q(name__startswith='ian')
+        ) # not اي اسم اكبر من الرقم وليس الاسم هذا
+
 
     return render (request, 'products/debug.html', {'data':data})
 
