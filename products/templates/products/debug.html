@@ -9,7 +9,16 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <li> {{data}}</li>
+    <ul>
+        {% for object in data %}
+            <li>
+                {{object}} - {{object.price}}
 
+            </li>
+        
+        
+        {% endfor %}
+
+    </ul>
 </body>
 </html>

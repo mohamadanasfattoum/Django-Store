@@ -48,7 +48,9 @@ def mydebug(request):
     # data = Product.objects.filter(price__gt= 90).order_by('-price') # with filter and desc
 
     # data = Product.objects.order_by('price')[:8] # first 8
-    data = Product.objects.order_by('price')[0]
+    # data = Product.objects.order_by('price')[0] # the first one
+    # data = Product.objects.earliest('price') # the first one
+    data = Product.objects.latest('price') # the last one
 
     return render (request, 'products/debug.html', {'data':data})
 
