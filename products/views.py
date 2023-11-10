@@ -7,7 +7,10 @@ from .models import Product , ProductImages, Review, Brand
 
 
 def mydebug(request):
-    data = Product.objects.all()
+    # data = Product.objects.all() # >90 
+    # data = Product.objects.filter(price__gte= 90) # >=90
+    # data = Product.objects.filter(price__lt = 22) # <22
+    # data = Product.objects.filter(price__lte = 22) # <=22
     return render (request, 'products/debug.html', {'data':data})
 
 
