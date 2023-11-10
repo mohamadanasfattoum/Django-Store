@@ -45,8 +45,10 @@ def mydebug(request):
     # data = Product.objects.order_by('-price') # DESC تنازلي 
     # data = Product.objects.order_by('price').reverse()   # DESC تنازلي 
     # data = Product.objects.order_by('price' , 'name') # ranking ترتيب بجدولين
-    data = Product.objects.filter(price__gt= 90).order_by('-price') # with filter and desc
+    # data = Product.objects.filter(price__gt= 90).order_by('-price') # with filter and desc
 
+    # data = Product.objects.order_by('price')[:8] # first 8
+    data = Product.objects.order_by('price')[0]
 
     return render (request, 'products/debug.html', {'data':data})
 
