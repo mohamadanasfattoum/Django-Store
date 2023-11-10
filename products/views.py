@@ -11,6 +11,14 @@ def mydebug(request):
     # data = Product.objects.filter(price__gte= 90) # >=90
     # data = Product.objects.filter(price__lt = 22) # <22
     # data = Product.objects.filter(price__lte = 22) # <=22
+    # data = Product.objects.filter(price__range = (90,91)) # range  
+
+
+    # data = Product.objects.filter(name__contains='ian') # name
+    # data = Product.objects.filter(name__startswith='ian') # start name
+    # data = Product.objects.filter(name__endswith='ia') # name end
+    data = Product.objects.filter(name__isnull=True) # without name
+
     return render (request, 'products/debug.html', {'data':data})
 
 
