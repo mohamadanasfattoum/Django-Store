@@ -3,7 +3,7 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Product , ProductImages, Review, Brand
-from django.db.models import Q , F
+from django.db.models import Q , F , Value
 
 def mydebug(request):
     # data = Product.objects.all() 
@@ -38,7 +38,15 @@ def mydebug(request):
     #     ~Q(name__startswith='ian')
     #     ) # not اي اسم اكبر من الرقم وليس الاسم هذا
 
-    data = Product.objects.filter(quantity = F('price')) # للفلترة بجدولين.متساويين
+    # data = Product.objects.filter(quantity = F('price')) # للفلترة بجدولين.متساويين
+
+    # data = Product.objects.all().order_by('price') # ordnen mit price
+    # data = Product.objects.order_by('price')
+    # data = Product.objects.order_by('-price') # DESC تنازلي 
+    # data = Product.objects.order_by('price').reverse()   # DESC تنازلي 
+    # data = Product.objects.order_by('price' , 'name') # ranking ترتيب بجدولين
+    data = Product.objects.filter(price__gt= 90).order_by('-price') # with filter and desc
+
 
     return render (request, 'products/debug.html', {'data':data})
 
