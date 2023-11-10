@@ -54,8 +54,11 @@ def mydebug(request):
 
     # data = Product.objects.values('name','price')   # just 'name','price' 2 values
     # data = Product.objects.only('name','price') #  في هذه الحالة لاتضف كويري داتا اضافية وغير معرفة في التمبلت اضف فقط الكويري الراجعة من الفيو متل الاسم وسعر
-    data = Product.objects.defer('vidio_url','description') # without 'vidio_url','description'
+    # data = Product.objects.defer('vidio_url','description') # without 'vidio_url','description'
 
+    # data = Product.objects.select_related('brand').all() # ForeignKey and one-to-one
+    data = Product.objects.prefetch_related('brand').all() # many-to-many
+    # sarch about django queryset api Documentation
 
     return render (request, 'products/debug.html', {'data':data})
 
