@@ -50,7 +50,10 @@ def mydebug(request):
     # data = Product.objects.order_by('price')[:8] # first 8
     # data = Product.objects.order_by('price')[0] # the first one
     # data = Product.objects.earliest('price') # the first one
-    data = Product.objects.latest('price') # the last one
+    # data = Product.objects.latest('price') # the last one
+
+    # data = Product.objects.values('name','price')   # just 'name','price' 2 values
+    data = Product.objects.only('name','price') #  في هذه الحالة لاتضف كويري داتا اضافية وغير معرفة في التمبلت اضف فقط الكويري الراجعة من الفيو متل الاسم وسعر
 
     return render (request, 'products/debug.html', {'data':data})
 
