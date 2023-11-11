@@ -1,17 +1,19 @@
+- caching
 
-- orders ,coupons ----> api
+- transltion
+- celery
 
+- sql
 
 - users
 - charts
-- sql
+
+
 - queryset api
-- transltion
 - ajax
 - docker
 - celery
 - redis
-- caching
 - payment
 - deploy
 - testing

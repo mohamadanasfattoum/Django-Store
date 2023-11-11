@@ -57,8 +57,11 @@ def mydebug(request):
     # data = Product.objects.defer('vidio_url','description') # without 'vidio_url','description'
 
     # data = Product.objects.select_related('brand').all() # ForeignKey and one-to-one
-    data = Product.objects.prefetch_related('brand').all() # many-to-many
+    # data = Product.objects.prefetch_related('brand').all() # many-to-many
     # sarch about django queryset api Documentation
+
+
+    data = Product.objects.all() 
 
     return render (request, 'products/debug.html', {'data':data})
 
