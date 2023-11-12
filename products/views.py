@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Product , ProductImages, Review, Brand
 from django.db.models import Q , F , Value
+from django.db.models.aggregates import Min, Max, Sum, Avg, Count
+
 
 def mydebug(request):
     # data = Product.objects.all() 
@@ -61,7 +63,21 @@ def mydebug(request):
     # sarch about django queryset api Documentation
 
 
-    data = Product.objects.all() 
+
+    # Aggregation functions
+    # Min , Max , Sum , Avgr , count
+    # data = Product.objects.aggregate(Sum('price')) 
+    # data = Product.objects.aggregate(Sum('quantity'), Avg('price')) 
+    # data = Product.objects.aggregate(mysum=Sum('quantity'), myavg=Avg('price')) 
+    # data = Product.objects.aggregate(Avg('price')) 
+    # data = Product.objects.aggregate(Max('price')) 
+    # data = Product.objects.aggregate(Min('price')) 
+    # data = Product.objects.aggregate(Count('price')) 
+
+
+
+
+    # data = Product.objects.all() 
 
     return render (request, 'products/debug.html', {'data':data})
 
