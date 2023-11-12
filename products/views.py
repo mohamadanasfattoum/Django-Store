@@ -76,6 +76,9 @@ def mydebug(request):
 
 
 
+    # data = Product.objects.annotate(is_new=Value(True)) 
+    data = Product.objects.annotate(price_with_tax=F('price')*1.25)
+
 
     # data = Product.objects.all() 
 
