@@ -7,6 +7,10 @@ from django.db.models import Q , F , Value
 from django.db.models.aggregates import Min, Max, Sum, Avg, Count
 
 
+from django.views.decorators.cache import cache_page
+
+
+@cache_page(60 * 1)
 def mydebug(request):
     # data = Product.objects.all() 
     # data = Product.objects.filter(price__gt= 90) # >90
@@ -37,10 +41,10 @@ def mydebug(request):
 
     # data = Product.objects.filter(
     #     Q(price__gt= 90) |
-    #     ~Q(name__startswith='ian')
+    #     ~Q(name__startswith='ian') 
     #     ) # not اي اسم اكبر من الرقم وليس الاسم هذا
 
-    # data = Product.objects.filter(quantity = F('price')) # للفلترة بجدولين.متساويين
+    # data = Product.objects.filter(quantity = F('price')) # F للفلترة بجدولين.متساويين
 
     # data = Product.objects.all().order_by('price') # ordnen mit price
     # data = Product.objects.order_by('price')
@@ -77,10 +81,10 @@ def mydebug(request):
 
 
     # data = Product.objects.annotate(is_new=Value(True)) 
-    data = Product.objects.annotate(price_with_tax=F('price')*1.25)
+    # data = Product.objects.annotate(price_with_tax=F('price')*1.25) # F لأستدعاء السعر 
 
 
-    # data = Product.objects.all() 
+    data = Product.objects.all() 
 
     return render (request, 'products/debug.html', {'data':data})
 
