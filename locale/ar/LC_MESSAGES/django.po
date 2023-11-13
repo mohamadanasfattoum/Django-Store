@@ -20,40 +20,41 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 #: .\products\models.py:15
 msgid "Name"
-msgstr ""
+msgstr "الاسم"
 
 #: .\products\models.py:16
 msgid "Image"
-msgstr ""
+msgstr "صورة"
 
 #: .\products\models.py:17
 msgid "Price"
-msgstr ""
+msgstr "السعر"
 
 #: .\products\models.py:18
 msgid "Flag"
-msgstr ""
+msgstr "العلم"
 
 #: .\products\models.py:19
 msgid "Brand"
-msgstr ""
+msgstr "العلامة التجارية"
 
 #: .\products\models.py:20
 msgid "SKU"
-msgstr ""
+msgstr "الكود"
 
 #: .\products\models.py:21
 msgid "Subtitle"
-msgstr ""
+msgstr "العنوان الفرعي"
 
 #: .\products\models.py:22
 msgid "Description"
-msgstr ""
+msgstr "الوصف"
 
 #: .\products\models.py:23
 msgid "Quantity"
-msgstr ""
+msgstr "الكمية"
 
 #: .\products\models.py:25
 msgid "Vidio URL"
-msgstr ""
+msgstr "عنوان URL للفيديو"
+
