@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -154,17 +155,17 @@
                         <div class="navbar-content">
                             <ul class="navbar-list">
                                 <li class="navbar-item ">
-                                    <a class="navbar-link " href="/">home</a>
+                                    <a class="navbar-link " href="/">{% translate "home" %}</a>
                                 </li>
                                 <li class="navbar-item ">
-                                    <a class="navbar-link " href="/products">shop</a>
+                                    <a class="navbar-link " href="/products">{% translate "shop" %}</a>
 
                                 </li>
                                 <li class="navbar-item ">
-                                    <a class="navbar-link " href="/products/brands"> brands</a>
+                                    <a class="navbar-link " href="/products/brands"> {% translate "brands" %}</a>
                                 </li>
                                 <li class="navbar-item ">
-                                    <a class="navbar-link " href="/orders">Orders</a>                               
+                                    <a class="navbar-link " href="/orders">{% translate "Orders" %}</a>                               
                                 </li>
 
                             </ul>
@@ -172,14 +173,14 @@
                                 <div class="navbar-info">
                                     <i class="icofont-ui-touch-phone"></i>
                                     <p>
-                                        <small>call us</small>
+                                        <small>{% translate "call us" %}</small>
                                         <span>{{company_data.call_us}}</span>
                                     </p>
                                 </div>
                                 <div class="navbar-info">
                                     <i class="icofont-ui-email"></i>
                                     <p>
-                                        <small>email us</small>
+                                        <small>{% translate "email us" %}</small>
                                         <span>{{company_data.email_us}}</span>
                                     </p>
                                 </div>
