@@ -171,3 +171,8 @@ CACHES = {
 
 
 LOCALE_PATHS = ['locale']
+
+LANGUAGES = [
+    ("ar", "Arabic"),
+    ("en", "English"),
+]
