@@ -175,5 +175,6 @@ LOCALE_PATHS = ['locale']
 
 LANGUAGES = [
     ("ar", "Arabic"),
+    ("de", "German"),    
     ("en", "English"),
 ]
