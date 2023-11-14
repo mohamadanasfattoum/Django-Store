@@ -1,6 +1,4 @@
-- caching
 
-- transltion
 - celery
 
 - sql
