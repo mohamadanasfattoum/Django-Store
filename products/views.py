@@ -91,7 +91,7 @@ def mydebug(request):
 
     data = Product.objects.all() 
 
-    send_emails().delay()  # to run send_emails with celery
+    send_emails.delay()  # to run send_emails with celery
 
     return render (request, 'products/debug.html', {'data':data})
 
