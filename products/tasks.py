@@ -7,4 +7,4 @@ import time
 def send_emails():
     for x in renge (10):
         time.sleep(5)
-        print(f'sending emails for user number {1}')
+        print(f'sending emails for user number {x}')
