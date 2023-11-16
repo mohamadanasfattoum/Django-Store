@@ -10,7 +10,12 @@ from django.db.models.aggregates import Min, Max, Sum, Avg, Count
 from django.views.decorators.cache import cache_page
 
 
-@cache_page(60 * 1)
+from .tasks import send_emails
+
+
+
+
+# @cache_page(60 * 1)
 def mydebug(request):
     # data = Product.objects.all() 
     # data = Product.objects.filter(price__gt= 90) # >90
@@ -85,6 +90,8 @@ def mydebug(request):
 
 
     data = Product.objects.all() 
+
+    send_emails().delay()  # to run send_emails with celery
 
     return render (request, 'products/debug.html', {'data':data})
 
