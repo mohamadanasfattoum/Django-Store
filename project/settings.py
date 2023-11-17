@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     "debug_toolbar",
+    'django_celery_results',
 
     
     # my apps
@@ -186,3 +187,4 @@ LANGUAGES = [
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_BACKEND_RESULTS = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
