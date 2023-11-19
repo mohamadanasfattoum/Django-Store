@@ -1,17 +1,14 @@
 
-- celery
-
 - sql
 
-- users
+s- users
 - charts
-
 
 - queryset api
 - ajax
 - docker
-- celery
-- redis
+
+
 - payment
 - deploy
 - testing
