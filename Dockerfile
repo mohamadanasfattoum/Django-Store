@@ -5,4 +5,13 @@ FROM python:3.11.6-slim-bullseye
 ENV PYTHONUNBUFFERED = 1
 
 # update linux
-RUN apt-get update
+RUN apt-get update && apt-get -y install gcc libpq-dev #لمساعدة تنزيل المكتبابالمبنية بالبايث
+
+# create folder ----> project
+WORKDIR /app
+
+
+#  pip freeze > requirements.txt
+
+
+
