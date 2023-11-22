@@ -6,7 +6,7 @@ s- users
 
 - queryset api
 - ajax
-- docker
+
 
 
 - payment
