@@ -9,4 +9,24 @@ services:
     container_name: Backend
     volumes:
       - .:/app
+    depends_on:
+      - redis
       
+
+  redis:
+    image: redis:7.2.3-alpine3.18
+    container_name: redisserver
+
+  celery:
+    image: celery:4.0.2
+    container_name: celeryserver
+    build: .
+    depends_on:
+      - redis
+      - djangoserver
+    volumes:
+      - .:/app
+    command: celery -A project worker --loglevel=info
+    environment:
+      - CELERY_BROKER_URL = 'redis://redis:6379/0'
+      - CELERY_BACKEND_RESULTS = 'redis://redis:6379/0'
