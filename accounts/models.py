@@ -14,10 +14,10 @@ class Profile(models.Model):
 
 
 
-@receiver(post_save,sender=User) # لم اليوسر ينعمله تسجيل جديد ويتسيف  بتناده عليها
+@receiver( post_save,sender=User) # لم اليوسر ينعمله تسجيل جديد ويتسيف  بتناده عليها
 def create_profile(sender,instance,created,**kwargs): # مين ارسل الاشارةsender. instance المستخدم.  ceared  هل المستخدم نشأ ولالأ
     if created:# if true لسى عامل الحساب  or fulse   اليوسر يعمل تعديل
-        Profile.objects.get(
+        Profile.objects.create(
             user= instance
 
 
