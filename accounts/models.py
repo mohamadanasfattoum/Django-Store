@@ -22,5 +22,16 @@ class ContactNumbers(models.Model):
     number = models.CharField(max_length=10)
 
 
+ADDRESS_TYPS = (
+    ('Home','Home'),
+    ('Office','Office'),
+    ('Bussiness','Bussiness'),
+    ('Academy','Academy'),
+    ('Others','Others')
+)
+
+
 class Address(models.Model):
-    pass
+    user = models.ForeignKey(User, related_name='user_address', on_delete=models.CASCADE)
+    type = models.CharField(max_length=10, choices=ADDRESS_TYPS)
+    address = models.CharField(max_length=150)
