@@ -30,4 +30,4 @@ class EmailOrUsernameLogin(ModelBackend):
 # لتسجيل الدخول بلإيميل
 # Authentication with my backend to login with Email and username
 
-
+#  django-phone-auth مكتبة لأستخدام رقم الهاتف 
