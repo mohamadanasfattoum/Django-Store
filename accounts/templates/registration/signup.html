@@ -1,4 +1,5 @@
 {% extends "auth_base.html" %}
+{% load django_bootstrap5 %}
 {% load static %}
 {% block body %}
         <!--=====================================
@@ -26,7 +27,10 @@
                                 <div class="user-form-divider">
                                     <p>or</p>
                                 </div>
-                                <form class="user-form">
+                                <form class="user-form" method="post">
+                                    {% csrf_token %}
+
+                                    {% bootstrap_form form %}
                                                                     
                                     <div class="form-button">
                                         <button type="submit">Singup</button>

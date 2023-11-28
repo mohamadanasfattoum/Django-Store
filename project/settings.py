@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
     "debug_toolbar",
     'django_celery_results',
+    "django_bootstrap5",
 
     
     # my apps
