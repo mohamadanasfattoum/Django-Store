@@ -10,7 +10,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-sm-10 col-md-12 col-lg-12 col-xl-10">
                         <div class="user-form-logo">
-                            <a href="index.html"><img src="{{company_data.logo.url}}" alt="logo"></a>
+                            <a href="/"><img src="{{company_data.logo.url}}" alt="logo"></a>
                         </div>
                         <div class="user-form-card">
                             <div class="user-form-title">
@@ -29,12 +29,11 @@
                                 </div>
                                 <form class="user-form" method="post">
                                     {% csrf_token %}
-
                                     {% bootstrap_form form %}
                                                                     
                                     <div class="form-button">
                                         <button type="submit">Singup</button>
-                                        <p>Forgot your password?<a href="reset-password.html">reset here</a></p>
+                                        <p>Forgot your password?<a href="{% url 'password_reset' %}">reset here</a></p>
                                     </div>
 
                                 </form>
