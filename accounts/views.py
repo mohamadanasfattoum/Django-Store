@@ -5,7 +5,7 @@ from .models import Profile
 from django.core.mail import send_mail
 
 
-def singup(request):
+def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         
