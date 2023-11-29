@@ -199,3 +199,11 @@ CELERY_RESULT_BACKEND = 'django-db'
 AUTHENTICATION_BACKENDS = [
     'accounts.backend.EmailOrUsernameLogin'
 ]
+
+
+
+
+
+
+LOGIN_REDIRCT_URL = '/'
+LOOUT_REDIRCT_URL = '/'
