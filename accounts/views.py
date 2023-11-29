@@ -10,8 +10,8 @@ def singup(request):
         form = SignupForm(request.POST)
         
         if form.is_valid():
-            username= form.cleaned_data('username')
-            email= form.cleaned_data('email')
+            username= form.cleaned_data['username']
+            email= form.cleaned_data['email']
 
             user = form.save(commit=False)
             user.is_active = False
