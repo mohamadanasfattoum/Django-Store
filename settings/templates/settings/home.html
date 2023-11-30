@@ -76,7 +76,7 @@
                 <ul class="suggest-slider slider-arrow">
                 {% for object in brands %}
                     <li>
-                        <a class="suggest-card" href="shop-4column.html">
+                        <a class="suggest-card" href="/products/brands/{{object.slug}}">
                             <img src="{{object.image.url}}" alt="suggest" style="width: 250px; height: 250px; object-fit: scale-down;">
                             <h5>{{object}} <span>34 items</span></h5>
                         </a>
@@ -113,7 +113,7 @@
                                     <button class="product-wish wish">
                                         <i class="fas fa-heart"></i>
                                     </button>
-                                    <a class="product-image" href="product-video.html">
+                                    <a class="product-image" href="/products/{{object.slug}}">
                                         <img src="{{object.image.url}}" alt="product" style="width: 250px; height: 250px; object-fit: scale-down;">
                                     </a>
                                     <div class="product-widget">
@@ -193,7 +193,7 @@
                                 <button class="feature-wish wish">
                                     <i class="fas fa-heart"></i>
                                 </button>
-                                <a class="feature-image" href="product-video.html">
+                                <a class="feature-image" href="/products/{{object.slug}}">
                                     <img src="{{object.image.url}}" alt="product" style="width: 250px; height: 250px; object-fit: scale-down;">
                                 </a>
                                 <div class="feature-widget">
