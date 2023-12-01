@@ -13,7 +13,9 @@
             <div class="col-lg-6">
                 <canvas id="myChart"></canvas>
             </div>
-            <div class="col-lg-6"></div>
+            <div class="col-lg-6">
+                <canvas id="myChart2"></canvas>
+            </div>
         </div>
 
     </div>
@@ -42,6 +44,33 @@
             }
           }
         });
+
+
+
+
+
+
+        const ctx2 = document.getElementById('myChart2');
+      
+        new Chart(ctx2, {
+          type: 'bar',
+          data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
       </script>
 
 
