@@ -55,3 +55,13 @@ def activate(request,username):
     else:
         form = ActivationForm()
     return render (request, 'registration/activate.html', {'form':form})
+
+
+
+
+
+
+def dashboard(request):
+
+
+    return render(request,'accounts/dashboard.html', {'':})
