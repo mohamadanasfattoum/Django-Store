@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from .forms import SignupForm, ActivationForm
 from django.contrib.auth.models import User
 from .models import Profile
+
+from django.contrib.auth.decorators import login_required # لحتى مابدخل عالصفحة إلا المسجل دخول في الداشبورد
+
 from django.core.mail import send_mail
 
 
@@ -60,8 +63,8 @@ def activate(request,username):
 
 
 
-
+@login_required # دللة تستخدم قبل دالة حتى تتفعل دالة الداش لازم يكون اليورس ريكوايرد
 def dashboard(request):
 
 
-    return render(request,'accounts/dashboard.html', {'':})
+    return render(request,'accounts/dashboard.html', {})
