@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required # لحتى مابدخ�
 
 from django.core.mail import send_mail
 
+from products.models import Product, Brand, Review
+from orders.models import Order
 
 def signup(request):
     if request.method == 'POST':
@@ -65,6 +67,26 @@ def activate(request,username):
 
 @login_required # دللة تستخدم قبل دالة حتى تتفعل دالة الداش لازم يكون اليورس ريكوايرد
 def dashboard(request):
+    new_product = Product.objects.filter(flag ='New').count()
+    feature_product = Product.objects.filter(flag ='Feature').count()
+    sale_product = Product.objects.filter(flag ='Sale').count()
+
+    user = User.objects.all().count
+    order = Order.objects.all().count
+    product = Product.objects.all().count
+    brand = Brand.objects.all().count
+    review = Review.objects.all().count
 
 
-    return render(request,'accounts/dashboard.html', {})
+    return render(request,'accounts/dashboard.html', {
+    'new_product':new_product ,
+    'feature_product':feature_product,
+    'sale_product':sale_product,
+    
+    'user':user,
+    'order':order,
+    'product':product,
+    'brand':brand,
+    'review':review,
+
+    })
