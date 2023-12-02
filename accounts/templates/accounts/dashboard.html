@@ -27,11 +27,11 @@
         const ctx = document.getElementById('myChart');
       
         new Chart(ctx, {
-          type: 'bar',
+          type: 'polarArea',
           data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+            labels: ['User', 'Order', 'Product', 'Brand', 'Review'],
             datasets: [{
-              label: '# of Votes',
+              label: '# Count',
               data: ['{{user}}', '{{order}}', '{{product}}', '{{brand}}', '{{review}}'],
               borderWidth: 1
             }]
@@ -53,9 +53,9 @@
         const ctx2 = document.getElementById('myChart2');
       
         new Chart(ctx2, {
-          type: 'pie',
+          type: 'doughnut',
           data: {
-            labels: ['Red', 'Blue', 'Yellow'],
+            labels: ['New', 'Feature', 'Sale'],
             datasets: [{
               label: '# of Votes',
               data: ['{{new_product}}', '{{feature_product}}', '{{sale_product}}'],
