@@ -1,8 +1,6 @@
 
 - sql
 
-- charts
-
 - queryset api
 - ajax
 

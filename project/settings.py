@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'django_celery_results',
     "django_bootstrap5",
+    'drf_yasg',
 
     
     # my apps
