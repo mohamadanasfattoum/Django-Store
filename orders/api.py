@@ -68,6 +68,7 @@ class OrderDetailAPI(generics.RetrieveAPIView):
 
 
 class CreateOrderAPI(generics.GenericAPIView):
+    serializer_class = OrderListSerializer
     def get(self, request, *args, **kwargs):
         user = User.objects.get(username=self.kwargs['username'])
         cart = Cart.objects.get(user=user,status='inprogress')
