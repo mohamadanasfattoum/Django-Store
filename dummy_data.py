@@ -44,7 +44,7 @@ def add_reviews(n):
     for x in range(n):
         Review.objects.create(
             user = User.objects.get(id=random.randint(1,4)),
-            product = Product.objects.get(id=random.randint(1,1002)),
+            product = Product.objects.get(id=random.randint(1,1000)),
             review = fake.text(max_nb_chars=200),
             rate = random.randint(1,5),
 
@@ -53,3 +53,8 @@ def add_reviews(n):
 
 
 
+# add_brands(53)
+
+# add_products(1000)
+
+add_reviews(3000)

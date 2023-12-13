@@ -3,7 +3,7 @@ version: '3.8' # the version compose with version docker
 services:
   djangoserver:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000 # um lockal docker mit lockal im gerät zuverbinden
+    command: python manage.py migrate && python manage.py runserver 0.0.0.0:8000 # um lockal docker mit lockal im gerät zuverbinden
     ports:
       - "8000:8000"
     container_name: Backend
