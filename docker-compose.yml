@@ -35,12 +35,13 @@ services:
     ports:
       - '5432:5432'
     environment:
-      - POSTGRES_USER = postgres
-      - POSTGRES_DB = db_store
-      - POSTGRES_PASSWORD = postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=db_store
+      - POSTGRES_PASSWORD=postgres
     volumes:
-      - postgres_data:data/var/lib/postgres/data # sodass den path immer gleich bleibt
+      - postgres_data:/var/lib/postgres/data #sodass den path immer gleich bleibt
 
 
 volumes:
-  - postgres_data:
+  postgres_data:
+    

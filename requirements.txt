@@ -13,6 +13,7 @@ django-bootstrap5==23.3
 django-celery-results==2.5.1
 django-debug-toolbar==4.2.0
 django-filter==23.3
+django-postgresql-dag==0.4.0
 django-summernote==0.8.20.0
 django-taggit==4.0.0
 djangorestframework==3.14.0
@@ -24,6 +25,7 @@ Markdown==3.4.4
 packaging==23.2
 Pillow==10.0.1
 prompt-toolkit==3.0.41
+psycopg2-binary==2.9.9
 python-dateutil==2.8.2
 pytz==2023.3.post1
 PyYAML==6.0.1
