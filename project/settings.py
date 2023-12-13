@@ -116,7 +116,7 @@ DATABASES = {
         "NAME": "db_store",
         "USER": "postgres",
         "PASSWORD": "postgres",
-        "HOST": "db", # server postgres in docker-compose
+        "HOST": "db",
         "PORT": "5432",
     }
 }
