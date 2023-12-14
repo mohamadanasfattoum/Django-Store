@@ -12,6 +12,7 @@ Django==4.2.5
 django-bootstrap5==23.3
 django-celery-results==2.5.1
 django-debug-toolbar==4.2.0
+django-environ==0.11.2
 django-filter==23.3
 django-postgresql-dag==0.4.0
 django-summernote==0.8.20.0
