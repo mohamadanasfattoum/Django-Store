@@ -3,7 +3,7 @@ version: '3.8' # the version compose with version docker
 services:
   djangoserver:
     build: .
-    command: python manage.py migrate && python manage.py runserver 0.0.0.0:8000 # um lockal docker mit lockal im gerät zuverbinden
+    command: python manage.py runserver 0.0.0.0:8000 # um lockal docker mit lockal im gerät zuverbinden
     ports:
       - "8000:8000"
     container_name: Backend
@@ -30,14 +30,17 @@ services:
     environment:
       - CELERY_BROKER_URL = 'redis://redis:6379/0'
       - CELERY_BACKEND_RESULTS = 'redis://redis:6379/0'
+  
+  
+  
   db:
     image: postgres:latest
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: db_store
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: env("DATABASE_USER")
+      POSTGRES_DB: env("DATABASE_NAME")
+      POSTGRES_PASSWORD: env("DATABASE_PASSWORD")
     volumes:
       - postgres_data:/var/lib/postgres/data #sodass den path immer gleich bleibt
 
