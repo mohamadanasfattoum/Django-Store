@@ -3,7 +3,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
 
 
-from products.models import Product, Brand, Review
+from products.models import Product, Brand, Review , ProductImages
 from django.contrib.auth.models import User
 import random
 from faker import Faker
@@ -38,6 +38,17 @@ def add_products(n):
     print(f"{n} Product was created successfully" )
 
 
+def add_productimages(n):
+    fake = Faker()
+    images = ['1.jpeg','2.jpeg','3.jpeg','4.jpeg','5.jpeg','6.jpeg','7.jpeg','8.jpeg','9.jpeg','10.jpeg']
+    for x in range(n):
+        ProductImages.objects.create(            
+            image = f"product_images/{images[random.randint(0,9)]}",
+            product = Product.objects.get(id=random.randint(1,1000)),
+        )
+    print(f"{n} ProductImages was created successfully" )
+
+
 
 def add_reviews(n):
     fake = Faker()
@@ -53,8 +64,11 @@ def add_reviews(n):
 
 
 
-# add_brands(53)
+# add_brands(55)
 
 # add_products(1000)
 
-add_reviews(3000)
+
+add_productimages(1000)
+
+# add_reviews(3000)
