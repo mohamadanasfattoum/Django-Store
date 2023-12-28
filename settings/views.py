@@ -2,10 +2,11 @@ from django.shortcuts import render
 from products.models import Product, Brand, Review
 
 from django.views.decorators.cache import cache_page
-
+from accounts.models import Profile
 
 # @cache_page(60 * 1)
 def home(request):
+    # profile = Profile.objects.all()
     brands = Brand.objects.all()[:20]
     sale_products = Product.objects.filter(flag='Sale')[:10]
     featur_products = Product.objects.filter(flag='Feature')[:6]
