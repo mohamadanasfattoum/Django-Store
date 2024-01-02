@@ -138,3 +138,7 @@ class BrandDetail(ListView): #change
         context = super().get_context_data(**kwargs)
         context["brand"] = Brand.objects.get(slug=self.kwargs['slug'])
         return context
+
+
+def add_review(request):
+    pass
