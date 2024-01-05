@@ -10,6 +10,10 @@ from django.db.models.aggregates import Min, Max, Sum, Avg, Count
 from django.views.decorators.cache import cache_page
 
 
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+
+
 from .tasks import send_emails
 
 
@@ -154,4 +158,7 @@ def add_review(request,slug):
     rate = rate
     )
 
-    return redirect(f'/products/{slug}')
+    # reviews
+    reviews = Review.objects.filter(product=product)
+    html = render_to_string('includes/product_reviews.html',{'reviews':reviews , request:request})
+    return JsonResponse({'result':html})

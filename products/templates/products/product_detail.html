@@ -681,7 +681,32 @@
     
     <script>
         $(document).ready(function(){
-            console.log('test')
+            $(document).on('submit','#reviewForm',function(event){
+                // stop refresh
+                event.preventDefault();
+
+                // ajax
+                $.ajax({
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    date: $(this).serialize(),
+                    dataType: 'json',
+                    success:function(response){
+                        $('#all-reviews').html(response['result'])
+                        $('#reviewForm').trigger('reset'); 
+
+                    },
+                    error:function(){
+
+                    }
+
+
+                })
+
+            })
+        
+
+
         })
 
 
