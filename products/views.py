@@ -143,7 +143,7 @@ class BrandDetail(ListView): #change
 def add_review(request,slug):
     product = Product.objects.get(slug=slug)
     review = request.POST['review'] # kann man auch so >> request.POST.get('review')  
-    rating = request.POST['rating']   # # weil in html name="rating"
+    rate = request.POST['rating']   # # weil in html name="rating"
 
 
 
