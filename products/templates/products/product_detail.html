@@ -140,7 +140,7 @@
 
                         <div class="product-details-frame">
                             <h3 class="frame-title">Reviews (2)</h3>
-                            <ul class="review-list">
+                            <ul class="review-list" id="all-reviews">
                                 {% include 'includes/product_reviews.html' %}
                             </ul>
 
@@ -677,5 +677,16 @@
                  PRODUCT RELATED PART END
         =======================================-->
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
+    <script>
+        $(document).ready(function(){
+            console.log('test')
+        })
+
+
+    </script>
+
+        
 
 {% endblock body %}
