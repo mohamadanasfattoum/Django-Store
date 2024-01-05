@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import Order, OrderDetail, Cart, CartDetail, Coupon
 from settings.models import DeliveryFee
 from django.shortcuts import get_object_or_404
+from products.models import Product
 
 def order_list(request):
     orders= Order.objects.all()
@@ -61,4 +62,8 @@ def checkout(request):
 
 
 def add_to_cart(request):
-    pass
+    product = Product.objects.get(id=request.POST['product_id'])
+    quantity = request.POST['quantity']
+
+    cart = Cart.objects.get(user=request.user,status='inprogress')
+
