@@ -58,3 +58,7 @@ def checkout(request):
         'discount': discount,
 
     })
+
+
+def add_to_cart(request):
+    pass
