@@ -95,7 +95,7 @@
                             </div>
                             <div class="details-add-group">
 
-                                <form action="/orders/add-to-cart" method="post" class="row">
+                                <form id="add-to-cart" action="/orders/add-to-cart" method="post" class="row">
                                     {% csrf_token %}
                                     <div class="col-lg-6">
                                         <input class="form-control" title="Quantity Number" type="number" name="quantity" value="1">
@@ -679,7 +679,10 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     
     <script>
+
         $(document).ready(function(){
+
+            // add review
             $(document).on('submit','#reviewForm',function(event){
                 // stop refresh
                 event.preventDefault();
@@ -703,10 +706,39 @@
                 })
 
             })
+
+            // add to cart
+
+            $(document).on('submit','#add-to-cart',function(event){
+                // stop refresh
+                event.preventDefault();
+
+                // ajax
+                $.ajax({
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    date: $(this).serialize(),
+                    dataType: 'json',
+                    success:function(response){
+                        $('#cart_sidbar').html(response['result'])
+                         
+
+                    },
+                    error:function(){
+
+                    }
+
+
+                })
+
+            })
         
 
 
         })
+
+        
+        
 
 
     </script>
