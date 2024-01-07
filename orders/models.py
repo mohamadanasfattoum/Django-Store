@@ -62,13 +62,13 @@ class Cart(models.Model):
 class CartDetail(models.Model):
     cart = models.ForeignKey(Cart, related_name='cart_detail', on_delete=models.CASCADE, null=True, blank=True)
     product = models.ForeignKey(Product, related_name='cartdetail_product', on_delete=models.SET_NULL, null=True, blank=True)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(default=1)
     total = models.FloatField(null=True, blank=True)
     
 
-    def save(self, *args, **kwargs):
-       self.total = round(self.quantity*self.product.price,2)
-       super(CartDetail, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #    self.total = round(self.quantity*self.product.price,2)
+    #    super(CartDetail, self).save(*args, **kwargs)
 
 
 class Coupon(models.Model):
