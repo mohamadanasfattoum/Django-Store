@@ -721,6 +721,9 @@
                     dataType: 'json',
                     success:function(response){
                         $('#cart_sidbar').html(response['result'])
+
+                        var total = $('#total_price')
+                        total.text(response['total'])
                          
 
                     },
