@@ -4,10 +4,15 @@ from .models import Order, OrderDetail, Cart, CartDetail, Coupon
 from settings.models import DeliveryFee
 from django.shortcuts import get_object_or_404
 from products.models import Product
-
+import stripe
+from django.conf import settings
+# ajax
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-
+# env
+from environ import Env
+env = Env()
+env.read_env()
 
 def order_list(request):
     orders= Order.objects.all()
@@ -21,6 +26,7 @@ def checkout(request):
     sub_total = cart.cart_total()
     total = sub_total + delivery_fee
     discount= 0
+    pub_key = env('STRIP_API_KEY-PUBLISHABLE')
 
 
     if request.method == 'POST':
@@ -49,6 +55,7 @@ def checkout(request):
                     'sub_total' : round(sub_total,2),
                     'total' : total,
                     'discount': round(coupon_value,2),
+                    'pub_key':pub_key,
 
                 })                
 
@@ -61,6 +68,7 @@ def checkout(request):
         'sub_total' : sub_total,
         'total' : total,
         'discount': discount,
+        'pub_key':pub_key,
 
     })
 
@@ -95,7 +103,22 @@ def add_to_cart(request):
 
 
 def process_payment(request):
-    pass
+    checkout_session = stripe.checkout.Session.create(
+        line_items=[
+            {
+                # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                'price': '{{PRICE_ID}}',
+                'quantity': 1,
+            },
+        ],
+        mode='payment',
+        success_url=settings.DOMAIN + 'order/checkout/payment/success',
+        cancel_url=settings.DOMAIN + 'order/checkout/payment/failed',
+    )
+
+
+
+
 
 
 def payment_success(request):
@@ -104,6 +127,6 @@ def payment_success(request):
 
 
 def payment_failed(request):
-    
+
     return render(request, 'orders/failed.html', {'code':'code'})
 
