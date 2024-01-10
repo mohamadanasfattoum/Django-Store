@@ -103,7 +103,7 @@
                                     </div>
 
                                     <div class="col-lg-6">
-                                        <button class="btn btn-primary product-add" title="Add to Cart">
+                                        <button class="product-add" title="Add to Cart">
                                             <i class="fas fa-shopping-basket"></i>
                                             <span>add to cart</span>
                                         </button>
@@ -708,7 +708,6 @@
             $(document).on('submit','#add-to-cart',function(event){
                 // stop refresh
                 event.preventDefault();
-
                 // ajax
                 $.ajax({
                     type: $(this).attr('method'),
@@ -716,7 +715,7 @@
                     date: $(this).serialize(),
                     dataType: 'json',
                     success:function(response){
-                        $('#cart_sidbar').html(response['result'])
+                        $('#cart_sidebar').html(response['result'])
 
                         var total = $('#total_price')
                         total.text(response['total'])
@@ -724,10 +723,12 @@
                         var total = $('#cart_count')
                         total.text(response['cart_count'])
 
-                        $(".product-add").css({"display","block"})
+                        $(".product-add").css("display", "block")
 
                     },
-                    error:function(){}
+                    error:function(){
+                        
+                    }
                 })
             })
         })

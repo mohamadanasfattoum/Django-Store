@@ -91,13 +91,10 @@ def add_to_cart(request):
 
     cart = Cart.objects.get(user=request.user,status='inprogress')
     cart_detail = CartDetail.objects.filter(cart=cart)
-    total = f's{cart.cart_total()}'
+    total = f'${cart.cart_total()}'
     cart_count = len(cart_detail)
 
-
-
-    html = render_to_string('includes/cart_sidbar.html',{'cart_data':cart, 'cart_detail_data':cart_detail , request:request})
-    
+    html = render_to_string('includes/cart_sidebar.html',{'cart_data':cart, 'cart_detail_data':cart_detail , request:request})
     return JsonResponse({'result':html, 'total':total, 'cart_count':cart_count})
 
 
