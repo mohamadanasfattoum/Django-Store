@@ -98,7 +98,7 @@
                                 <form id="add-to-cart" action="/orders/add-to-cart" method="post" class="row">
                                     {% csrf_token %}
                                     <div class="col-lg-6">
-                                        <input class="form-control" title="Quantity Number" type="number" name="quantity" value="1">
+                                        <input class="form-control"  type="number" name="quantity" value="1">
                                         <input type="hidden" name="product_id" value="{{object.id}}">
                                     </div>
 
@@ -679,66 +679,56 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     
     <script>
-
         $(document).ready(function(){
-
             // add review
-            $(document).on('submit','#reviewForm',function(event){
+            $(document).on('submit', '#reviewForm', function(event) {
                 // stop refresh
                 event.preventDefault();
-
+    
                 // ajax
                 $.ajax({
                     type: $(this).attr('method'),
                     url: $(this).attr('action'),
-                    date: $(this).serialize(),
+                    data: $(this).serialize(),
                     dataType: 'json',
-                    success:function(response){
-                        $('#all-reviews').html(response['result'])
-                        $('#reviewForm').trigger('reset'); 
-
+                    success: function(response) {
+                        $('#all-reviews').html(response['result']);
+                        $('#reviewForm').trigger('reset');
                     },
-                    error:function(){
+                    error: function() {
+                        // Handle error if needed
                     }
-                })
-            })
-
+                });
+            });
+    
             // add to cart
-
-            $(document).on('submit','#add-to-cart',function(event){
+            $(document).on('submit', '#add-to-cart', function(event) {
                 // stop refresh
                 event.preventDefault();
                 // ajax
                 $.ajax({
                     type: $(this).attr('method'),
                     url: $(this).attr('action'),
-                    date: $(this).serialize(),
+                    data: $(this).serialize(),
                     dataType: 'json',
-                    success:function(response){
-                        $('#cart_sidebar').html(response['result'])
-
-                        var total = $('#total_price')
-                        total.text(response['total'])
+                    success: function(response) {
+                        $('#cart_sidebar').html(response['result']);
+    
+                        var total = $('#total_price');
+                        total.text(response['total']);
                          
-                        var total = $('#cart_count')
-                        total.text(response['cart_count'])
-
-                        $(".product-add").css("display", "block")
-
+                        var cartCount = $('#cart_count');
+                        cartCount.text(response['cart_count']);
+    
+                        $('.product-add').css('display', 'block');
                     },
-                    error:function(){
+                    error: function() {
                         
                     }
-                })
-            })
-        })
-
-        
-        
-
-
+                });
+            });
+        });
     </script>
-
         
 
 {% endblock body %}
