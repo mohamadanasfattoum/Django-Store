@@ -14,6 +14,8 @@ from django.template.loader import render_to_string
 from environ import Env
 env = Env()
 env.read_env()
+# code 
+from utils.generate_code import generate_code
 
 
 @login_required
@@ -103,18 +105,38 @@ def add_to_cart(request):
 
 
 def process_payment(request):
+    cart = Cart.objects.get(user=request.user,status='inprogress')
+    cart_detail = CartDetail.objects.filter(cart=cart)
+    delivery_fee= DeliveryFee.objects.last().fee
+
+    if cart.order_total_discount:
+        total = cart.order_total_discount() + delivery_fee
+    else:
+        total = cart.cart_total() + delivery_fee
+    
+    code = generate_code()
+    stripe.api_key = env('STRIP_API_KEY_SECRET')
+
+
     checkout_session = stripe.checkout.Session.create(
         line_items=[
             {
-                # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                'price': '{{PRICE_ID}}',
-                'quantity': 1,
+                'price_data': {
+                    'currency' : 'usd',
+                    'product_data' : {
+                        'name' : code
+                    },
+                    'unit_amount' : int(total*100)
+                },
+                'quantity' : 1
             },
         ],
         mode='payment',
-        success_url=settings.DOMAIN + 'order/checkout/payment/success',
-        cancel_url=settings.DOMAIN + 'order/checkout/payment/failed',
+        success_url=settings.DOMAIN + 'http://127.0.0.1:8000/order/checkout/payment/success',
+        cancel_url=settings.DOMAIN + 'http://127.0.0.1:8000/order/checkout/payment/failed',
     )
+
+    return JsonResponse({'session':checkout_session})
 
 
 
