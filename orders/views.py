@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 import stripe
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 # ajax
 from django.http import JsonResponse
 from django.template.loader import render_to_string
@@ -14,11 +15,13 @@ from environ import Env
 env = Env()
 env.read_env()
 
+
+@login_required
 def order_list(request):
     orders= Order.objects.all()
     return render(request,'orders/orders.html',{'orders':orders})
 
-
+@login_required
 def checkout(request):
     cart = Cart.objects.get(user=request.user,status='inprogress')
     cart_detail= CartDetail.objects.filter(cart=cart)
@@ -26,7 +29,7 @@ def checkout(request):
     sub_total = cart.cart_total()
     total = sub_total + delivery_fee
     discount= 0
-    pub_key = env('STRIP_API_KEY-PUBLISHABLE')
+    pub_key = env('STRIP_API_KEY_PUBLISHABLE')
 
 
     if request.method == 'POST':
@@ -117,12 +120,12 @@ def process_payment(request):
 
 
 
-
+@login_required
 def payment_success(request):
 
     return render(request, 'orders/succes.html', {'code':'code'})
 
-
+@login_required
 def payment_failed(request):
 
     return render(request, 'orders/failed.html', {'code':'code'})
