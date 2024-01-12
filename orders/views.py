@@ -115,6 +115,10 @@ def process_payment(request):
         total = cart.cart_total() + delivery_fee
     
     code = generate_code()
+    # store code in session
+    request.session['order_code'] = code
+    request.session.save()
+
     stripe.api_key = env('STRIP_API_KEY_SECRET')
 
 
@@ -144,11 +148,35 @@ def process_payment(request):
 
 @login_required
 def payment_success(request):
+    cart = Cart.objects.get(user=request.user,status='inprogress')
+    cart_detail = CartDetail.objects.filter(cart=cart)
 
-    return render(request, 'orders/succes.html', {'code':'code'})
+    # get code from the session
+    order_code = request.session.get('order_code')
+
+    # cart-------------> order
+    new_order = Order.objects.create(
+        user = user ,
+        coupon = cart.coupon,
+        order_total_discount = cart.order_total_discountl,
+        code = order_code     
+    )
+    # cart_detail-------------> order_detail
+    for object in cart_detail:
+        OrderDetail.objects.create(
+            order = new_order ,
+            product = object.product ,
+            quantity = object.quantity ,
+            price = object.product.price ,
+            total = object.total
+        )
+    cart.status= 'completed'
+    cart.save()  
+
+    return render(request, 'orders/succes.html', {'code':order_code})
 
 @login_required
 def payment_failed(request):
 
-    return render(request, 'orders/failed.html', {'code':'code'})
+    return render(request, 'orders/failed.html', {})
 
