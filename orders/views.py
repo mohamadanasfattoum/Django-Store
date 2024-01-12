@@ -126,23 +126,21 @@ def process_payment(request):
         line_items=[
             {
                 'price_data': {
-                    'currency' : 'usd',
-                    'product_data' : {
-                        'name' : code
+                    'currency': 'usd',
+                    'product_data': {
+                        'name': code
                     },
-                    'unit_amount' : int(total*100)
+                    'unit_amount': int(total*100)
                 },
-                'quantity' : 1
+                'quantity': 1
             },
         ],
         mode='payment',
-        success_url=settings.DOMAIN + 'http://127.0.0.1:8000/order/checkout/payment/success',
-        cancel_url=settings.DOMAIN + 'http://127.0.0.1:8000/order/checkout/payment/failed',
+        success_url= 'http://127.0.0.1:8000/orders/checkout/payment/success',
+        cancel_url= 'http://127.0.0.1:8000/orders/checkout/payment/failed'
     )
 
     return JsonResponse({'session':checkout_session})
-
-
 
 
 
@@ -156,9 +154,9 @@ def payment_success(request):
 
     # cart-------------> order
     new_order = Order.objects.create(
-        user = user ,
+        user = request.user ,
         coupon = cart.coupon,
-        order_total_discount = cart.order_total_discountl,
+        order_total_discount = cart.order_total_discount,
         code = order_code     
     )
     # cart_detail-------------> order_detail
@@ -173,7 +171,7 @@ def payment_success(request):
     cart.status= 'completed'
     cart.save()  
 
-    return render(request, 'orders/succes.html', {'code':order_code})
+    return render(request, 'orders/success.html', {'code':order_code})
 
 @login_required
 def payment_failed(request):

@@ -398,9 +398,25 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <script>
-        function buy(event){
+        function buy(event) {
             event.preventDefault();
-            console.log(buy)
+            console.log("buy");
+          
+            var stripe = Stripe('{{pub_key}}');
+          
+            fetch('/orders/checkout/payment', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+              }
+            }).then(function(response) {
+              return response.json();
+            }).then(function(data) {
+              return stripe.redirectToCheckout({ sessionId: data.session.id });
+            }).catch(function(error) {
+              console.error('Error:', error);
+            });
         }
 
         
