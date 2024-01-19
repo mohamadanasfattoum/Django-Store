@@ -87,31 +87,14 @@
                                 </div>
                                 <div class="chekout-coupon">
                                     <button class="coupon-btn">Do you have a coupon code?</button>
-                                    <form class="coupon-form" method= "post" >
+                                    <form class="coupon-form" method= "post" id="add-coupon" action="/orders/checkout" >
                                         {% csrf_token %}
-                                        <input type="text" name = "coupon_code" placeholder="Enter your coupon code"> <!--  لحتى الدجانجو يتعرف علأنبوت لازم نضيفه بأسمه هي الفورم لارم يكون الها اسم name -->
+                                        <input type="text" name = "coupon_code" placeholder="Enter your coupon code" > <!--  لحتى الدجانجو يتعرف علأنبوت لازم نضيفه بأسمه هي الفورم لارم يكون الها اسم name -->
                                         <button type="submit"><span>apply</span></button>
                                     </form>
                                 </div>
-                                <div class="checkout-charge">
-                                    <ul>
-                                        <li>
-                                            <span>Sub total</span>
-                                            <span>${{sub_total}}</span>
-                                        </li>
-                                        <li>
-                                            <span>delivery fee</span>
-                                            <span>${{delivery_fee}}</span>
-                                        </li>
-                                        <li>
-                                            <span>discount</span>
-                                            <span>${{discount}}</span>
-                                        </li>
-                                        <li>
-                                            <span>Total<small>(Incl. VAT)</small></span>
-                                            <span>${{total}}</span>
-                                        </li>
-                                    </ul>
+                                <div class="checkout-charge" id="coupon-check">
+                                    {% include 'includes/coupon-check.html' %}
                                 </div>
                             </div>
                         </div>
@@ -418,14 +401,39 @@
               console.error('Error:', error);
             });
         }
-
-        
-        
-
-
     </script>
 
-
+    <script>
+        $(document).ready(function(){
+            $(document).on('submit', '#add-coupon', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        $('#checkout-id').html(response['result']);
+                        
+                        var total_price_coupon = $('#total_price_coupon');
+                        total_price_coupon.text(response['total']);
+        
+                        var discount = $('#discount');
+                        discount.text(response['discount']);
+        
+                        var delivery_fee = $('#delivery_fee');
+                        delivery_fee.text(response['delivery_fee']);
+                        
+                        var sub_total = $('#sub_total');
+                        sub_total.text(response['sub_total']);
+                    },
+                    error: function() {
+                        // Handle error
+                    }
+                });
+            });
+        });
+    </script>
 
 
 {% endblock body %}
