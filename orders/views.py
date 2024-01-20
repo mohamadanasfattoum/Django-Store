@@ -129,7 +129,14 @@ def checkout(request):
                 cart.save()
                 coupon.save()
 
-                return render(request,'orders/checkout.html',{
+                html = render_to_string('includes/coupon-check.html', {
+                    'total': total,
+                    'discount': discount,
+                    'sub_total': sub_total,
+                    'delivery_fee': delivery_fee
+                })
+
+                return JsonResponse('orders/checkout.html',{
                     'cart':cart ,
                     'cart_detail':cart_detail,
                     'delivery_fee' : delivery_fee,
@@ -137,9 +144,7 @@ def checkout(request):
                     'total' : total,
                     'discount': round(coupon_value,2),
                     'pub_key':pub_key,
-                })                
-
-
+                })
 
     return render(request,'orders/checkout.html',{
         'cart':cart ,
@@ -162,12 +167,8 @@ def checkout(request):
 #                         'pub_key': pub_key,
 #                     })
 
-#     html = render_to_string('includes/coupon-check.html', {
-#         'total': total,
-#         'discount': discount,
-#         'sub_total': sub_total,
-#         'delivery_fee': delivery_fee,
-#     })
+
+#     
 #     return JsonResponse({
 #         'result': html,
 #         'total': total,

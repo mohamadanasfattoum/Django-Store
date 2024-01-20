@@ -413,7 +413,7 @@
                     data: $(this).serialize(),
                     dataType: 'json',
                     success: function(response) {
-                        $('#checkout-id').html(response['result']);
+                        $('#coupon-check').html(response['result']);
                         
                         var total_price_coupon = $('#total_price_coupon');
                         total_price_coupon.text(response['total']);
@@ -428,7 +428,7 @@
                         sub_total.text(response['sub_total']);
                     },
                     error: function() {
-                        // Handle error
+
                     }
                 });
             });
