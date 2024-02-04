@@ -108,35 +108,22 @@ def checkout(request):
     total = sub_total + delivery_fee
     discount= 0
     pub_key = env('STRIP_API_KEY_PUBLISHABLE')
-
-
     if request.method == 'POST':
         code = request.POST['coupon_code'] # هيك بنادي عالكود من الصغحة
         #coupon = Coupon.objects.get(code=code)
         coupon = get_object_or_404(Coupon , code=code)    #لكي لايتوقف الموقع عند هدم تطابق الكود
-
-
         if coupon and coupon.quantity > 0 :  # للتأكد من الوقت 
             today_date = datetime.datetime.today().date()
             if today_date >= coupon.start_date and today_date <= coupon.end_date:
                 coupon_value = sub_total / 100*coupon.discount
                 sub_total = sub_total - coupon_value
                 total = sub_total + delivery_fee
-
                 cart.coupon = coupon
                 cart.order_total_discount = sub_total # مجموع الخقم الرئيسي
                 coupon.quantity -= 1
                 cart.save()
                 coupon.save()
-
-                html = render_to_string('includes/coupon-check.html', {
-                    'total': total,
-                    'discount': discount,
-                    'sub_total': sub_total,
-                    'delivery_fee': delivery_fee
-                })
-
-                return JsonResponse('orders/checkout.html',{
+                return render(request,'orders/checkout.html',{
                     'cart':cart ,
                     'cart_detail':cart_detail,
                     'delivery_fee' : delivery_fee,
@@ -144,8 +131,7 @@ def checkout(request):
                     'total' : total,
                     'discount': round(coupon_value,2),
                     'pub_key':pub_key,
-                })
-
+                })                
     return render(request,'orders/checkout.html',{
         'cart':cart ,
         'cart_detail':cart_detail,
@@ -155,29 +141,6 @@ def checkout(request):
         'discount': discount,
         'pub_key':pub_key,
     })
-#-----------------------
-
-#  return render(request, 'orders/checkout.html', {
-#                         'cart': cart,
-#                         'cart_detail': cart_detail,
-#                         'delivery_fee': delivery_fee,
-#                         'sub_total': round(sub_total, 2),
-#                         'total': total,
-#                         'discount': round(coupon_value, 2),
-#                         'pub_key': pub_key,
-#                     })
-
-
-#     
-#     return JsonResponse({
-#         'result': html,
-#         'total': total,
-#         'discount': discount,
-#         'sub_total': sub_total,
-#         'delivery_fee': delivery_fee,
-#     })
-
-
 
 
 
