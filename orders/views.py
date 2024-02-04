@@ -123,7 +123,7 @@ def checkout(request):
                 coupon.quantity -= 1
                 cart.save()
                 coupon.save()
-                return render(request,'orders/checkout.html',{
+                html = render_to_string('includes/coupon-check.html',{
                     'cart':cart ,
                     'cart_detail':cart_detail,
                     'delivery_fee' : delivery_fee,
@@ -131,7 +131,8 @@ def checkout(request):
                     'total' : total,
                     'discount': round(coupon_value,2),
                     'pub_key':pub_key,
-                })                
+                })
+                return JsonResponse({'result':html})                
     return render(request,'orders/checkout.html',{
         'cart':cart ,
         'cart_detail':cart_detail,
