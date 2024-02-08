@@ -414,18 +414,6 @@
                     dataType: 'json',
                     success: function(response) {
                         $('#coupon-check').html(response['result']);
-                        
-                        var total_price_coupon = $('#total_price_coupon');
-                        total_price_coupon.text(response['total']);
-        
-                        var discount = $('#discount');
-                        discount.text(response['discount']);
-        
-                        var delivery_fee = $('#delivery_fee');
-                        delivery_fee.text(response['delivery_fee']);
-                        
-                        var sub_total = $('#sub_total');
-                        sub_total.text(response['sub_total']);
                     },
                     error: function() {
 

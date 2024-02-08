@@ -53,7 +53,7 @@ def checkout(request):
                     'cart_detail':cart_detail,
                     'delivery_fee' : delivery_fee,
                     'sub_total' : round(sub_total,2),
-                    'total' : total,
+                    'total' : round(total,2),
                     'discount': round(coupon_value,2),
                     'pub_key':pub_key,
                 })
