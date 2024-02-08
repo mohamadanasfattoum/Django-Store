@@ -153,10 +153,21 @@
                     <a href="index.html" class="header-logo">
                         <img src="{{company_data.logo.url}}" alt="logo">
                     </a>
-                    <a href="accounts/login/" class="header-widget" title="My Account">
-                        <img src="{{accounts_data.image.url}}" alt="user">
-                        <span>{{company_data.name}}</span>
-                    </a>
+                    {% if user.is_authenticated %}
+                        {% if user.user_profile.image %}
+                            <img style="width: 100px;" src="{{user.user_profile.image.url}}" alt="user">
+                        {% else %}
+                            <img style="width: 100px;" src="{% static 'user.jpg' %}" alt="user">
+                        {% endif %}
+                    {% else %}
+                        <a href="accounts/login/" class="header-widget" title="My Account">
+                            <span>Login</span>
+                        </a>
+                        <a href="accounts/signup" class="header-widget" title="My Account">
+                            <span>Signup</span>
+                        </a>
+                    {% endif %}
+
 
                     <form class="header-form">
                         <input type="text" placeholder="Search anything...">
