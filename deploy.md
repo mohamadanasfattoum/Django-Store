@@ -1,0 +1,11 @@
+- install:
+    - whitenoise + add in settings
+    - dj_database_url + add in settings
+    - gunicorn
+    - update requirements
+    -
+- add:
+    - runtime.txt : python
+    - Procfile : gunicorn
+    -
+
