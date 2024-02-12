@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from environ import Env
+import dj_database_url
 
 env = Env()
 env.read_env()
@@ -110,12 +111,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # DATABASES = {
 #     "default": {
@@ -127,6 +128,11 @@ DATABASES = {
 #         "PORT": "5432",
 #     }
 # }
+
+DATABASES = {
+    'default' : dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600)
+}
+
 
 
 # Password validation
