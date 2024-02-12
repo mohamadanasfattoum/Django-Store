@@ -29,7 +29,7 @@ def add_products(n):
             image = f"product/{images[random.randint(0,9)]}",
             price = round(random.uniform(20.99,99.99),2),
             flag = flags[random.randint(0,2)],
-            brand = Brand.objects.get(id=random.randint(1,55)),
+            brand = Brand.objects.get(id=random.randint(1,10)),
             sku = random.randint(1000,1000000),
             subtitle = fake.text(max_nb_chars=200),
             description = fake.text(max_nb_chars=1000),
@@ -44,7 +44,7 @@ def add_productimages(n):
     for x in range(n):
         ProductImages.objects.create(            
             image = f"product_images/{images[random.randint(0,9)]}",
-            product = Product.objects.get(id=random.randint(1,1000)),
+            product = Product.objects.get(id=random.randint(1,100)),
         )
     print(f"{n} ProductImages was created successfully" )
 
@@ -55,20 +55,31 @@ def add_reviews(n):
     for x in range(n):
         Review.objects.create(
             user = User.objects.get(id=random.randint(1,4)),
-            product = Product.objects.get(id=random.randint(1,1000)),
+            product = Product.objects.get(id=random.randint(1,100)),
             review = fake.text(max_nb_chars=200),
             rate = random.randint(1,5),
 
         )
     print(f"{n} Review was created successfully" )
 
+def add_users(n):
+    for x in range(n):
+        fake = Faker()
+        User.objects.create(
+            username = f"user_{x}",
+            email = fake.email(),
+            password = '12345'
+        )
 
 
-# add_brands(55)
-
-# add_products(1000)
 
 
-add_productimages(1000)
 
-# add_reviews(3000)
+
+
+
+
+add_users(5)
+add_brands(10)
+add_products(100)
+add_reviews(300)
