@@ -62,6 +62,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     "django.middleware.locale.LocaleMiddleware",  # لتفعيل زر الغو مشانوتبديل الترجمة
     'django.middleware.common.CommonMiddleware',
@@ -228,3 +229,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 
 DOMAIN='127.0.0.1:8000'
+
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
