@@ -146,12 +146,12 @@
                 <div class="header-content">
                     <div class="header-media-group">
                         <button class="header-user"><img src="images/user.png" alt="user"></button>
-                        <a href="index.html"><img style="width: 100px;" src="{% static 'images.png' %}" alt="logo"></a>
+                        <a href="index.html"><img src="images/logo.png" alt="logo"></a>
                         <button class="header-src"><i class="fas fa-search"></i></button>
                     </div>
 
                     <a href="index.html" class="header-logo">
-                        <img src="{{company_data.logo.url}}" alt="logo">
+                        <img src="{{company_data.logo.url}}" style="width: 50px;" alt="logo">
                     </a>
                     {% if user.is_authenticated %}
                         {% if user.user_profile.image %}
